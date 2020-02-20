@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+
+  //- trainee_list.sort(function(a, b) { let textA = a.family_name; let textB = b.family_name; return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; });
+
+  ul    
+    each trainee in trainee_list
+        li
+            a(href=trainee.url) #{trainee.name}
+            |   (#{trainee.dob_formatted})
+    else
+        li There are no trainees.

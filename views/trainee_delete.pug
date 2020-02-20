@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 #{title}: #{trainee.name}
+
+  p Do you really want to delete this Trainee ?
+
+  form(method='POST' action='')
+    div.form-group
+        input#traineeid.form-control(type='hidden', name='authorid', required='true', value=trainee._id )
+
+    button.btn.btn-primary(type='submit') Delete

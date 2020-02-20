@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Trainee: #{trainee.name}
+
+  p #[strong Family Name: ] #{trainee.family_name}
+  p #[strong First Name: ] #{trainee.first_name}
+  p #[strong Date Of Birth: ] #{trainee.dob_formatted}
+  p #[strong Email: ] #{trainee.email}
+  p #[strong Gender: ] #{trainee.gender}
+  p #[strong Message: ] #{trainee.message}
+  p #[strong Experience in Technologies: ]  #{trainee.experiencedTechno}
+
+  hr
+  p
+    a(href=trainee.url+'/delete') Delete Trainee
+  p
+    a(href=trainee.url+'/update') Update Trainee

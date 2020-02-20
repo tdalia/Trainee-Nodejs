@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+        label(for='first_name') First Name
+        input#first_name.form-control(type='text' placeholder='First name' name='first_name' required='true' value=(undefined===trainee ? '' : trainee.first_name))
+        label(for='family_name') Family Name
+        input#family_name.form-control(type='text' placeholder='Family name (surname)' name='family_name' required='true' value=(undefined===trainee ? '' : trainee.family_name))
+    div.form-group
+        label(for='date_of_birth') Date of birth:
+        input#date_of_birth.form-control(type='date' name='date_of_birth' required='true' value=(undefined===trainee ? '' : trainee.date_of_birth) )
+        label(for='gender') Gender
+        select#gender.form-control(type='select' placeholder='Select gender' name='gender' required='true')
+            for gen in genders
+                if trainee
+                    option(value=gen selected=(gen==trainee.gender ? 'selected' : false)) #{gen}
+                else
+                    option(value=gen) #{gen}
+    div.form-group
+        label(for='email') Email
+        input#email.form-control(type='text' placeholder='Email' name='email' required='true' value=(undefined===trainee ? '' : trainee.email))
+    div.form-group
+        label(for='message') Message
+        input#message.form-control(type='text' placeholder='Additional Information' name='message' value=(undefined===trainee ? '' : trainee.message))
+        label(for='experiencedTechno') Experience in technologies
+        input#experiencedTechno.form-control(type='text' placeholder='Experience in Technologies - seperated by , comma' name='experiencedTechno' value=(undefined===trainee ? '' : trainee.experiencedTechno))
+
+    button.btn.btn-primary(type='submit') Submit
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
